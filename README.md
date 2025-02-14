@@ -103,7 +103,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For further inquiries or support, contact [your_email@example.com](mailto:your_email@example.com).
+For further inquiries or support, contact [bernannouissam1@gmail.com](mailto:bernannouissam1@gmail.com).
 
 
 
