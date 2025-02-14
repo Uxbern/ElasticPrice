@@ -16,9 +16,9 @@ Q_new = Q_previous * (1 + epsilon * Delta P%)
 
 IT is a tool, that allows the company to forecast effectively the new demand given a simple historical data, it can process multiple SKu's (product id's) and computes all possible elasticities. Returns a Graph and the .xslx file with the new demand (in order for the Company to evaluate the cost for example of a Commercial Operation)
 
-# Elastic Price Variation Calculation API
+# Elastic Price Demand Calculation API
 
-An API for calculating price elasticity variations and forecasting demand based on historical price and demand data using logarithmic regression.
+The API is client user-friendly APÏ, that allows the user, to, upload to indicators files : indicators1.csv (using . as a seperator) and indicators2.csv (resp same restriction) and then returns .xslx file and a graph on the local web page, that gives insights about the elasticity variation, and the demand variation. The final_predictions.xslx file contains the new demand and the it's price point aswell as the elasticity used. The program computes also a matrix of elasticity for each Sku (one can check if the elasticity value is correct). Handles nan, null values 
 
 ## Project Overview
 
