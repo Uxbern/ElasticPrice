@@ -1,16 +1,32 @@
+## Abstract
+
+This API leverages a combinatory approach to calculate price elasticity across all possible pairs of historical price–demand points. Unlike spreadsheets (such as Excel), which are not well-suited to handle all elasticity combinations, our method systematically computes **n * (n - 1) / 2** different elasticity values **epsilon_{i,j}**. Each **epsilon_{i,j}** is defined as:
+
+```
+epsilon_{i,j} = (Q_j - Q_i) / (P_j - P_i)
+```
+
+where **P_i** and **Q_i** (respectively **P_j** and **Q_j**) refer to the price and demand of the i-th (resp. j-th) historical data point.
+
+Given an elasticity **epsilon** and a percentage change in price **Delta P%**, the API computes the new demand (**Q_new**) from the previous demand (**Q_previous**):
+
+```
+Q_new = Q_previous * (1 + epsilon * Delta P%)
+```
+
 # Elastic Price Variation Calculation API
 
 An API for calculating price elasticity variations and forecasting demand based on historical price and demand data using logarithmic regression.
 
 ## Project Overview
 
-This API leverages the economic principle of price elasticity of demand (\(\frac{\Delta Q}{\Delta P} = \varepsilon\)) to forecast demand variations in response to price changes. The tool is particularly designed for use in e-commerce scenarios, where price points, including psychological pricing, impact consumer demand.
+This API leverages the economic principle of price elasticity of demand **epsilon = (Delta Q) / (Delta P)** to forecast demand variations in response to price changes. The tool is particularly designed for use in e-commerce scenarios, where price points—including psychological pricing—impact consumer demand.
 
 ## Features
 
 - **Elasticity Calculation**: Computes price elasticity using historical price and demand data from two indicators (`indicators1` and `indicators2`).
 - **Logarithmic Regression**: Utilizes logarithmic regression to generate additional price-demand data points from a limited historical dataset.
-- **Demand Forecasting**: Given a dataset with new and old prices, calculates the percentage change in price (\(\Delta P\%\)) and predicts new demand using the computed elasticities.
+- **Demand Forecasting**: Given a dataset with new and old prices, calculates the percentage change in price (Delta P%) and predicts new demand using the computed elasticities.
 - **E-commerce Ready**: Proven forecasting precision of 50% in e-commerce applications.
 - **User-Friendly API**: Provides a client-friendly interface to upload data, calculate elasticity, and retrieve demand forecasts.
 
@@ -28,7 +44,6 @@ This API leverages the economic principle of price elasticity of demand (\(\frac
 ## API Endpoints
 
 ### `POST /api/v1/calculate-elasticity`
-
 - **Description**: Upload historical price and demand data from indicators.
 - **Request Body**:
   - `indicators1`: File path for the first indicators dataset.
@@ -37,7 +52,6 @@ This API leverages the economic principle of price elasticity of demand (\(\frac
   - `elasticities`: Computed elasticity values for each price point.
 
 ### `POST /api/v1/forecast-demand`
-
 - **Description**: Submit new and old prices to forecast demand changes.
 - **Request Body**:
   - `old_prices`: List of previous prices.
@@ -47,7 +61,7 @@ This API leverages the economic principle of price elasticity of demand (\(\frac
 
 ## Technical Details
 
-- **Elasticity Formula**: \(\varepsilon = \frac{\%\Delta Q}{\%\Delta P}\)
+- **Elasticity Formula**: `epsilon = (Delta Q%) / (Delta P%)`
 - **Logarithmic Regression**:
   - Generates synthetic price-demand pairs from limited historical data.
   - Improves accuracy of demand forecasting.
@@ -57,7 +71,7 @@ This API leverages the economic principle of price elasticity of demand (\(\frac
 
 ```bash
 # Clone the repository
-git clone https://github.com/Uxbern/API.py.git
+git clone https://github.com/yourusername/elastic-price-api.git
 
 # Navigate to project directory
 cd elastic-price-api
@@ -89,7 +103,8 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For further inquiries or support, contact [your\_bernannouissam1@gmail.com](mailto\:bernannouissam1@gmail.com).
+For further inquiries or support, contact [your_email@example.com](mailto:your_email@example.com).
+
 
 
 
