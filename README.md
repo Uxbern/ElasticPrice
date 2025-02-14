@@ -14,6 +14,8 @@ Given an elasticity **epsilon** and a percentage change in price **Delta P%**, t
 Q_new = Q_previous * (1 + epsilon * Delta P%)
 ```
 
+IT is a tool, that allows the company to forecast effectively the new demand given a simple historical data, it can process multiple SKu's (product id's) and computes all possible elasticities. Returns a Graph and the .xslx file with the new demand (in order for the Company to evaluate the cost for example of a Commercial Operation)
+
 # Elastic Price Variation Calculation API
 
 An API for calculating price elasticity variations and forecasting demand based on historical price and demand data using logarithmic regression.
