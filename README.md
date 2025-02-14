@@ -22,7 +22,9 @@ The API is client user-friendly API, that allows the user, to, upload to indicat
 
 ## Project Overview
 
-This API leverages the economic principle of price elasticity of demand **epsilon = (Delta Q) / (Delta P)** to forecast demand variations in response to price changes. The tool is particularly designed for use in e-commerce scenarios, where price points—including psychological pricing—impact consumer demand.
+The core product of this API is to leverage the economic principle of price elasticity of demand **epsilon = (Delta Q) / (Delta P)** to forecast demand variations in response to price changes in % and allows the computation of all combinatory possible elasticities a limitation that Excel cannot compute. Moreover The tool is particularly designed for use in e-commerce scenarios, where price points are  psychological (.99 ending) and thus the program is specifically designed to handle them, the speed of execution is also notable in comparaison to Excel based calculation which are time complex limited.
+
+The project has been tested in an E-commerce scenario for a company, and showed remarkable results surpassing an XGboost internal model of predictions. With an RMSE and MAE of 50% over 3000 skus. As in E-commerce many variables impact demand : (traffic, views, promotions, ...) but all those parameters lie in the previous demand, capturing the most evident weight : price. Allows not only a time non-consuming calculation, and does not require extensively large dataset for the prediction as compared to other models (Lasso, XGboost ...) but leveraging the economic principle and extending it to non existing price points in the dataset allows a solid forecast of demand.
 
 ## Features
 
