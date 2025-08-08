@@ -1,0 +1,47 @@
+// manifest.json
+{
+  "name": "On-Device NER Redactor (Transformers.js)",
+  "description": "Sanitize ChatGPT prompts on-device using Transformers.js NER (no server).",
+  "version": "0.1.0",
+  "manifest_version": 3,
+
+  "permissions": [
+    "offscreen",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://huggingface.co/*",
+    "https://cdn.jsdelivr.net/*"
+  ],
+
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [{
+    "matches": ["*://*/*"],
+    "resources": ["offscreen.html", "offscreen.js"]
+  }],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'; worker-src 'self' blob:;"
+  },
+
+  "action": {
+    "default_title": "On-Device NER Redactor"
+  }
+}
