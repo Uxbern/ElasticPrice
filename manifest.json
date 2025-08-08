@@ -41,7 +41,10 @@
     "extension_pages": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'; worker-src 'self' blob:;"
   },
 
-  "action": {
-    "default_title": "On-Device NER Redactor"
+"action": {
+  "default_title": "On-Device NER Redactor",
+  "default_popup": "popup.html"
+}
+
   }
 }
