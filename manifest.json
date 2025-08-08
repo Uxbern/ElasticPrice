@@ -1,4 +1,4 @@
-// manifest.json
+
 {
   "name": "On-Device NER Redactor (Transformers.js)",
   "description": "Sanitize ChatGPT prompts on-device using Transformers.js NER (no server).",
