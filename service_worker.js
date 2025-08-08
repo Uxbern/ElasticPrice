@@ -30,6 +30,31 @@ chrome.runtime.onInstalled.addListener(async () => {
     ner_mask_style: 'tag'               // 'tag' or 'block'
   });
 });
+// service_worker.js (append this near the other onMessage listener)
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg?.type === 'NER_WARMUP') {
+    (async () => {
+      await ensureOffscreen();
+      const id = crypto.randomUUID();
+
+      const once = (response) => {
+        if (response?.type === 'OFFSCREEN_WARMUP_RESULT' && response.id === id) {
+          chrome.runtime.onMessage.removeListener(once);
+          sendResponse(response.ok === true);
+        }
+      };
+      chrome.runtime.onMessage.addListener(once);
+
+      const { ner_model } = await chrome.storage.local.get('ner_model');
+      await chrome.runtime.sendMessage({
+        type: 'OFFSCREEN_WARMUP',
+        id,
+        model: msg.model || ner_model || 'Xenova/bert-base-NER',
+      });
+    })();
+    return true; // async
+  }
+});
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg?.type === 'NER_SANITIZE') {
